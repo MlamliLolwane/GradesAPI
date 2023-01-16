@@ -63,9 +63,7 @@ class GradeController extends Controller
     {
         $request->validated();
 
-        $grade = Grade::where('id', $grade_id);
-
-        $grade->fill($request->all());
+        $grade = Grade::where('id', $grade_id)->update($request->all());
 
         return response()->json($grade, Response::HTTP_OK);
     }

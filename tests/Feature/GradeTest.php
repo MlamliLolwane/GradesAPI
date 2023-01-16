@@ -43,7 +43,7 @@ class GradeTest extends TestCase
     public function test_that_a_grade_can_be_updated()
     {
         //Create a new Grade using the factory
-        Grade::factory()->create([
+        $grade = Grade::factory()->create([
             'grade_number' => 1,
             'grade_suffix' => 'A'
         ]);
@@ -51,12 +51,16 @@ class GradeTest extends TestCase
         //Verify that the Grade was created ]
         $this->assertCount(1, Grade::all());
 
+        //Get the id of the last created Grade
+        $last_grade_id = $grade->id;
+
         //Update the Grade suffix to C
-        $updatedGrade = $this->patchJson('/api/grade/update/1', [
+        $updatedGrade = $this->patchJson('/api/grade/update/'.$last_grade_id, [
             'grade_suffix' => 'C'
         ]);
 
-        dd($updatedGrade);
+        // dd(Grade::where('id', $last_grade_id)->get());
+        $updatedGrade->assertOk();
     }
 
     //Test that all Grades can be fetched from the database

@@ -87,6 +87,34 @@ class GradeLearnerTest extends TestCase
         ]);
     }
 
+    public function test_a_grade_can_be_updated()
+    {
+        //Create a Grade
+        $first_grade = Grade::factory()->create();
+
+        //Create another Grade
+        $second_grade = Grade::factory()->create();
+
+        //Create a Grade Learner using the first_grade
+        $grade_learner = GradeLearner::factory()->create([
+            'grade_id' => $first_grade->id ,
+            'learner_id' => $first_grade->id
+        ]);
+
+        // $grade_learner = $this->postJson('/api/grade_learner/store', [
+        //     'grade_id' => $first_grade->id,
+        //     'learner_id' => 1
+        // ]);
+
+        $this->assertCount(1, GradeLearner::all());
+
+        //Update the Grade Learner grade_id to the second_grade id
+        $updated = $this->patchJson('/api/grade_learner/update/'.$grade_learner->id, [
+            'grade_id' => $second_grade->id
+        ]);
+
+        $updated->assertOk();
+    }
 
     //Test that a Grade Learner can be deleted from the database
     public function test_that_a_grade_learner_can_be_deleted()

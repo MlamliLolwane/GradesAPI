@@ -59,16 +59,13 @@ class GradeLearnerController extends Controller
      * @param  \App\Models\GradeLearner  $gradeLearner
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateGradeLearnerRequest $request, GradeLearner $gradeLearner)
+    public function update(UpdateGradeLearnerRequest $request, $grade_learner_id)
     {
         $request->validated();
 
-        $gradeLearner->grade_id = $request->grade_id;
-        $gradeLearner->learner_id = $request->learner_id;
+        $grade_learner = GradeLearner::where('id', $grade_learner_id)->update($request->all());
 
-        $gradeLearner->save();
-
-        return response()->json($gradeLearner, Response::HTTP_OK);
+        return response()->json($grade_learner, Response::HTTP_OK);
     }
 
     /**
