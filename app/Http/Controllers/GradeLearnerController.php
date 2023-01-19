@@ -16,7 +16,7 @@ class GradeLearnerController extends Controller
      */
     public function index()
     {
-        $grade_learners = GradeLearner::paginate(15);
+        $grade_learners = GradeLearner::all();
 
         return response()->json($grade_learners, Response::HTTP_OK);
     }

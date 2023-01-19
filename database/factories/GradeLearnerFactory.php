@@ -14,11 +14,10 @@ class GradeLearnerFactory extends Factory
     
     public function definition()
     {
-        static $grade_id = 1;
         static $learner_id = 1;
 
         return [
-            'grade_id' => $grade_id++,
+            'grade_id' => $this->faker->numberBetween(1, 6),
             'learner_id' => $learner_id++
         ];
     }

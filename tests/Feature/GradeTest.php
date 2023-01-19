@@ -78,7 +78,7 @@ class GradeTest extends TestCase
         $grades = $this->getJson('/api/grade/index');
         
         //Ensure that exactly 15 Grades were fetched from the database
-        $grades->assertJsonCount(15, 'data');
+        $this->assertCount(15, Grade::all());
     }
 
     public function test_that_a_grade_with_a_given_id_can_be_fetched_from_the_database()

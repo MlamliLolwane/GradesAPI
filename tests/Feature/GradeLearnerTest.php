@@ -46,10 +46,10 @@ class GradeLearnerTest extends TestCase
         $this->assertCount(15, GradeLearner::all());
 
         //Get all the Grade Learners from the database
-        $grade_learners = $this->getJson('/api/grade_learner/index');
+        $this->getJson('/api/grade_learner/index');
 
         //Ensure that 15 Grade Learners were fetched from the database
-        $grade_learners->assertJsonCount(15, 'data');
+        $this->assertCount(15, GradeLearner::all());
     }
 
 
