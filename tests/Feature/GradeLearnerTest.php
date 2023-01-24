@@ -31,10 +31,10 @@ class GradeLearnerTest extends TestCase
 
     public function test_all_grade_learners_can_be_fetched_from_the_database()
     {
-        //Create 15 Grades (Pagination)
-        $grades = Grade::factory(15)->create();
+        //Create 20 Grades
+        $grades = Grade::factory(20)->create();
 
-        //Create 15 Grade Learners from the Grade ids that were generated from the factory
+        //Create 20 Grade Learners from the Grade ids that were generated from the factory
         foreach ($grades as $grade) {
             GradeLearner::factory()->create([
                 'grade_id' => $grade->id,
@@ -42,14 +42,14 @@ class GradeLearnerTest extends TestCase
             ]);
         }
 
-        //Ensure that the 15 Grade Learners were created 
-        $this->assertCount(15, GradeLearner::all());
+        //Ensure that the 20 Grade Learners were created 
+        $this->assertCount(20, GradeLearner::all());
 
         //Get all the Grade Learners from the database
         $this->getJson('/api/grade_learner/index');
 
-        //Ensure that 15 Grade Learners were fetched from the database
-        $this->assertCount(15, GradeLearner::all());
+        //Ensure that 20 Grade Learners were fetched from the database
+        $this->assertCount(20, GradeLearner::all());
     }
 
 

@@ -18,7 +18,7 @@ class GradeController extends Controller
     {
         $grades = Grade::all();
 
-        return response()->json($grades, Response::HTTP_OK);
+        return response()->json(['data' => $grades], Response::HTTP_OK);
     }
 
     /**
