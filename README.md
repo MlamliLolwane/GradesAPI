@@ -2,7 +2,7 @@
   <img
   src="Grades API ERD.png"
   alt="Grades API ERD">
-  <figcaption>Grades API ERD</figcaption>
+  <figcaption>The Entity Relational Diagram for the Grades API</figcaption>
 </figure>
 
 ### iLetters - Grades API
