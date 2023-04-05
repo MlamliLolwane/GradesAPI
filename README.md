@@ -1,3 +1,10 @@
+<figure>
+  <img
+  src="Grades API ERD.png"
+  alt="Grades API ERD">
+  <figcaption>Grades API ERD</figcaption>
+</figure>
+
 ### iLetters - Grades API
 
 This microservice is responsible for adding grades and classes to the system for that specific school.
