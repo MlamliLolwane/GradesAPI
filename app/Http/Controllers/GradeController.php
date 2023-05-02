@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grade;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreGradeRequest;
 use App\Http\Requests\UpdateGradeRequest;
-use Illuminate\Http\Response;
 
 class GradeController extends Controller
 {
@@ -16,7 +17,7 @@ class GradeController extends Controller
      */
     public function index()
     {
-        $grades = Grade::all();
+        $grades = Grade::orderBy('grade_number')->get();
 
         return response()->json(['data' => $grades], Response::HTTP_OK);
     }
@@ -79,5 +80,14 @@ class GradeController extends Controller
         $grade = Grade::where('id', $grade_id)->delete();
 
         return response()->json($grade, Response::HTTP_OK);
+    }
+
+    public function count_grades()
+    {
+        $grades = DB::table('grades')
+            ->distinct()
+            ->count('grade_number');
+
+        return response()->json(['data' => $grades], Response::HTTP_OK);
     }
 }

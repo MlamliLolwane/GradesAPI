@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/grade_learner/store', [GradeLearnerController::class, 'store']);
 Route::get('/grade_learner/index', [GradeLearnerController::class, 'index']);
 Route::get('/grade_learner/show/{id}', [GradeLearnerController::class, 'show']);
+Route::get('/grade_learner/last_grade_learner', [GradeLearnerController::class, 'last_grade_learner']);
 Route::patch('/grade_learner/update/{id}', [GradeLearnerController::class, 'update']);
 Route::delete('/grade_learner/destroy/{id}', [GradeLearnerController::class, 'destroy']);
 
@@ -30,3 +31,4 @@ Route::get('/grade/index', [GradeController::class, 'index']);
 Route::get('/grade/show/{id}', [GradeController::class, 'show']);
 Route::patch('/grade/update/{id}', [GradeController::class, 'update']);
 Route::delete('/grade/destroy/{id}', [GradeController::class, 'destroy']);
+Route::get('/grade/count', [GradeController::class, 'count_grades']);

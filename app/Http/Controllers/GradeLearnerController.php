@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GradeLearner;
 use App\Http\Requests\StoreGradeLearnerRequest;
 use App\Http\Requests\UpdateGradeLearnerRequest;
+use App\Models\Grade;
 use Illuminate\Http\Response;
 
 class GradeLearnerController extends Controller
@@ -50,6 +51,15 @@ class GradeLearnerController extends Controller
         $grade_learner = GradeLearner::findOrFail($gradeLearnerID);
 
         return response()->json($grade_learner, Response::HTTP_OK);
+    }
+
+    public function last_grade_learner()
+    {
+        $grade_learner = GradeLearner::orderBy('id', 'desc')->first()->grade_id;
+
+        $grade = Grade::findOrFail($grade_learner);
+
+        return response()->json(['data' => $grade], Response::HTTP_OK);
     }
 
     /**

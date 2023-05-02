@@ -14,6 +14,6 @@ class GradeLearnerSeeder extends Seeder
      */
     public function run()
     {
-        GradeLearner::factory(25000)->create();
+        GradeLearner::factory(1000)->create();
     }
 }
