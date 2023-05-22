@@ -29,6 +29,7 @@ Route::delete('/grade_learner/destroy/{id}', [GradeLearnerController::class, 'de
 Route::post('/grade/store', [GradeController::class, 'store']);
 Route::get('/grade/index', [GradeController::class, 'index']);
 Route::get('/grade/show/{id}', [GradeController::class, 'show']);
+Route::get('/grade/distinct', [GradeController::class, 'distinctGrades']);
 Route::patch('/grade/update/{id}', [GradeController::class, 'update']);
 Route::delete('/grade/destroy/{id}', [GradeController::class, 'destroy']);
 Route::get('/grade/count', [GradeController::class, 'count_grades']);

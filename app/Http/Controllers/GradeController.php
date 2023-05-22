@@ -90,4 +90,16 @@ class GradeController extends Controller
 
         return response()->json(['data' => $grades], Response::HTTP_OK);
     }
+
+    public function distinctGrades()
+    {
+        //$sql = "ORDER BY grades.grade_number, grade_suffix";
+        $grades = DB::table('grades')
+        ->select(DB::raw("distinct(grade_suffix), grades.grade_number, grades.id"))
+        ->orderBy('grades.grade_number')
+        ->orderBy('grade_suffix')
+        ->get();
+
+        return response()->json($grades, Response::HTTP_OK);
+    }
 }
